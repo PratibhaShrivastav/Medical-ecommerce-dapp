@@ -1,0 +1,13 @@
+<h2 style="font-weight:bold"> Please login below with required credentials! </h2>
+<br>
+    {% if form.errors %}
+        <h3> Your username and password didnt match! </h3>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %%}
+        {{form.as_p }}
+     <br>
+        <input type='submit' class="btn btn-primary btn-lg" value='Login'>
+     <!-- <input type='hidden' name='next' value='{{next}}'>-->
+    </form>

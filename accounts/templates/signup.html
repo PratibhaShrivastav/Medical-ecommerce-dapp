@@ -1,0 +1,9 @@
+<h2 style="font-weight:bold"> Please register below with required credentials! </h2>
+<br>
+    <form method="POST">
+        {% csrf_token %%}
+        {{form.as_p }}
+     <br>
+        <input type='submit' class="btn btn-primary btn-lg" value='Signup'>
+     <!-- <input type='hidden' name='next' value='{{next}}'>-->
+    </form>
