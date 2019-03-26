@@ -55,12 +55,12 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3 col-xs-2">
-					<div id="fh5co-logo"><a href="index.html">Medico</a></div>
+					<div id="fh5co-logo"><a href="{% url 'home' %}">Medico</a></div>
 				</div>
 				<div class="col-md-6 col-xs-6 text-center menu-1">
 					<ul>
 						<li class="has-dropdown">
-							<a href="product.html">Shop</a>
+							<a href="{% url 'home' %}">Shop</a>
 							<ul class="dropdown">
 								<li><a href="single.html">Single Shop</a></li>
 							</ul>
@@ -78,6 +78,7 @@
 						{% if not user.is_authenticated %}
 						<li><a href="{% url 'accounts:login' %}">Log In</a></li>
 						<li><a href="{% url 'accounts:signup' %}">Signup</a></li>
+						<li><a href="{% url 'home' %}">Prescription</a></li>
 						{% else %}
 						<li><a href="{% url 'accounts:logout' %}">Log Out</a></li>
 						{% endif %}
@@ -93,7 +94,7 @@
 						      </span>
 						    </div>
 						</li> {% endcomment %}
-						<li class="shopping-cart"><a href="#" class="cart"><span><small>0</small><i class="fas fa-shopping-cart"></i></span></a></li>
+						<li class="shopping-cart"><a href="#" class="cart"><span><small>0</small><i class="fas fa-2x fa-shopping-cart"></i></span></a></li>
 					</ul>
 				</div>
 			</div>
@@ -102,7 +103,7 @@
 	</nav>
 	{% block content %}
 	<aside id="fh5co-hero" class="js-fullheight">
-		<div class="flexslider js-fullheight">
+		<div class="flexslider js-fullheighpriyat">
 			<ul class="slides">
 		   	<li style="background-image: url({% static 'images/wall.jpg' %});">
 		   		<div class="overlay-gradient"></div>
@@ -423,7 +424,7 @@
 		<div class="container">
 			<div class="row row-pb-md">
 				<div class="col-md-4 fh5co-widget">
-					<h3>Shop.</h3>
+					<h3>Medico</h3>
 					<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
 				</div>
 				<div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1">
@@ -438,7 +439,6 @@
 
 				<div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1">
 					<ul class="fh5co-footer-links">
-						<li><a href="#">Shop</a></li>
 						<li><a href="#">Privacy</a></li>
 						<li><a href="#">Testimonials</a></li>
 						<li><a href="#">Handbook</a></li>
