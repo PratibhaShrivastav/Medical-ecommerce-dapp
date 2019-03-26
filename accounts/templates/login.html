@@ -1,13 +1,60 @@
-<h2 style="font-weight:bold"> Please login below with required credentials! </h2>
-<br>
-    {% if form.errors %}
-        <h3> Your username and password didnt match! </h3>
-    {% endif %}
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url({% static 'images/bannerr.jpg' %});height:300px">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center">
+					<div class="display-t">
+						<div class="display-tc animate-box" data-animate-effect="fadeIn">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	
+	
+	<div id="fh5co-contact">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 col-md-push-1 animate-box">
+					
+				
 
-    <form method="POST">
-        {% csrf_token %%}
-        {{form.as_p }}
-     <br>
-        <input type='submit' class="btn btn-primary btn-lg" value='Login'>
-     <!-- <input type='hidden' name='next' value='{{next}}'>-->
-    </form>
+				</div>
+				<div class="col-md-6 animate-box">
+					<h3 style="font-size:30px">Log In to your account</h3>
+					<form method="POST">
+                        {% csrf_token %}
+						<div class="row form-group">
+							<div class="col-md-12">
+								<!-- <label for="fname">First Name</label> -->
+								<input type="text" id="fname" class="form-control" placeholder="Username" name="username">
+							</div>
+							
+						</div>
+
+						<div class="row form-group">
+							<div class="col-md-12">
+								<!-- <label for="email">Email</label> -->
+								<input type="password" id="password" class="form-control" placeholder="Password" name="password">
+							</div>
+						</div>
+
+						
+
+						
+						<div class="form-group">
+							<input type="submit" value="Log In" class="btn btn-primary">
+						</div>
+
+					</form>		
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+{% endblock %}
