@@ -8,4 +8,7 @@ class Product(models.Model):
     amount = models.IntegerField()
     price = models.IntegerField(default=100)
     product_img = models.ImageField(upload_to='images/',default='images/default.jpeg')
-    cart = models.ForeignKey(Cart,on_delete=models.CASCADE,null=True,blank=True)
+    cart = models.ForeignKey(Cart, related_name="products", on_delete=models.CASCADE,null=True,blank=True)
+
+    def __str__(self):
+        return self.name
