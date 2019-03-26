@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+TEXTRAZOR_KEY = "308ad87de7772313af92cd79514ce2d329112cdd7390c877f3406b6b"
 # Application definition
 
 INSTALLED_APPS = [

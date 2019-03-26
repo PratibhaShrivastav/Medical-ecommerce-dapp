@@ -5,6 +5,10 @@ from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404,redirect
 from products.models import Product, Cart
 
+import pytesseract
+import textrazor
+from PIL import Image
+from django.conf import settings
 
 class Signup(CreateView):
     form_class = UserCreationForm
@@ -69,3 +73,71 @@ def Removefromcart(request,pk):
     product.save()
     cart.save()
     return redirect('/accounts/cart/')
+
+"""
+This function uses pytessaract library to convert an image into text
+"""
+def ImageToText(request):
+    image = Image.open('static/')               #To Correct this line
+    content = pytesseract.image_to_string(image)
+    Generate_Data(request, content, settings.TEXTRAZOR_KEY)
+
+"""
+This function Adds list of medicines to a specified cart
+"""
+def addListToCart(request, medicines):
+    
+    cart = request.user.cart
+
+    for medicine in medicines:
+        product = Product.objects.get(name=medicine)
+        product.cart = cart
+        product.amount += 1
+        cart.price = cart.price + product.price
+        product.save()
+        cart.save()
+
+    return redirect('/accounts/cart/')
+
+"""
+Converts a string into meaningful data, by recognizing various entities.
+"""    
+def Generate_Data(request, content, key):
+    
+    textrazor.api_key = key
+    client = textrazor.TextRazor(extractors=["entities", "topics"])
+
+    response = client.analyze(content)
+    
+    medicines = []
+    person = []
+    hospital = ""
+    date = ""
+    doctor = ""
+    patient = ""
+    
+    for entity in response.entities():
+        if 'ChemicalSubstance' in entity.dbpedia_types:        #Case when entity is recongnised as ChemicalSubstance
+            medicines.append(str(entity.id).lower())
+        if 'Person' in entity.dbpedia_types:                   #Case when entity is recongnised as Person
+            person.append(entity.id)
+        if 'Company' in entity.dbpedia_types:                  #Case when entity is recongnised as Company
+            hospital = entity.id        
+        if 'Date' in entity.dbpedia_types:                     #Case when entity is recongnised as Date
+            date = entity.id
+    
+    index = content.find(person[0])    
+    drindex = content.find(person[1])      
+    
+    if index > drindex:                
+        doctor = person[0]
+        patient = person[1]
+    else:                              
+        doctor = person[1]
+        patient = person[0]
+
+    """
+    Save Data to Blockchain Here
+    """
+
+    addListToCart(request, medicines)
