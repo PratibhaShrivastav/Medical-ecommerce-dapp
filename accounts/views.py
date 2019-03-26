@@ -12,6 +12,9 @@ class Signup(CreateView):
     template_name = 'signup.html'
     success_url = reverse_lazy('accounts:login')
 
+def Showcart(request):
+    return render(request,'cart.html')
+
 def Addtocart(request,pk):
     product = get_object_or_404(Product,pk=pk)
     cart=request.user.cart

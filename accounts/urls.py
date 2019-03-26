@@ -9,6 +9,7 @@ urlpatterns = [
     path('login/', LoginView.as_view(template_name='login.html'),name='login'),
     path('logout/', LogoutView.as_view(),name='logout',kwargs={'next_page':'/'}),
     path('signup/',Signup.as_view(),name='signup'),
+    path('cart/',views.Showcart,name='showcart'),
     path('<int:pk>/add-to-cart/',views.Addtocart,name="addtocart"),
     path('<int:pk>/remove-from-cart/',views.Removefromcart,name="removefromcart"),
 ]
