@@ -114,8 +114,8 @@
 							<div class="slider-text-inner">
 								<div class="desc">
 									{% comment %} <span class="price">$800</span> {% endcomment %}
-									 <h2>UPLOAD PRESCRIPTION</h2>
-									<p>Upload your medical prescription here. Your data will be added to an ethereum blockchain.</p>
+									<h2>UPLOAD PRESCRIPTION</h2>
+									<p>Upload your medical prescription here. Your data will be added to an ethereum blockchain.Click here</p>
 									<p>
 											<form enctype="multipart/form-data" id="formfile" action="/accounts/analyze/" method="POST">
 												{% csrf_token %}
@@ -129,20 +129,20 @@
 						</div>
 					</div>
 				</li>
-				<li style="background-image: url({% static 'images/wall2.jpg' %});">
+				{% comment %} <li style="background-image: url({% static 'images/wall2.jpg' %});">
 					<div class="container">
 						<div class="col-md-6 col-md-offset-3 col-md-pull-3 js-fullheight slider-text">
 							<div class="slider-text-inner">
 								<div class="desc">
 									{% comment %} <span class="price">$530</span> {% endcomment %}
-									<h2>The Haluz Rocking Chair</h2>
+									{% comment %} <h2>The Haluz Rocking Chair</h2>
 									<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
 									<p><a href="single.html" class="btn btn-primary btn-outline btn-lg">Purchase Now</a></p>
 								</div>
 							</div>
 						</div>
 					</div>
-				</li>
+				</li> {% endcomment %}
 				{% comment %} <li style="background-image: url({% static 'images/wall.jpg' %});">
 					<div class="container">
 						<div class="col-md-6 col-md-offset-3 col-md-pull-3 js-fullheight slider-text">
@@ -221,9 +221,9 @@
 			</div>
 			<div class="row">
 			{% for product in products %}	
-					<div class="col-md-4 text-center animate-box">
+					<div class="col-md-3 text-center animate-box">
 						<div class="product">
-								<div class="product-grid" style="background-image:url({% static product.image %})">
+								<div class="product-grid" style="background-image:url({% static product.image %});height:200px">
 										<div class="inner">
 											<p>
 												{% if user.is_authenticated %}

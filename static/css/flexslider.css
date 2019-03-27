@@ -124,11 +124,11 @@ html[xmlns] .flexslider .slides {
   cursor: pointer;
   color: rgba(0, 0, 0, 0.8);
   text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 5.0 ease-in-out;
+  -moz-transition: all 5.0 ease-in-out;
+  -ms-transition: all 5.0s ease-in-out;
+  -o-transition: all 5.0s ease-in-out;
+  transition: all 5.0s ease-in-out;
 }
 .flex-direction-nav a:before {
   font-family: "flexslider-icon";
