@@ -1684,3 +1684,15 @@ h1, h2, h3, h4, h5, h6, figure {
   opacity: 0;
 }
 
+.hide_file {
+  position: absolute;
+  z-index: 1000;
+  opacity: 0;
+  cursor: pointer;
+  right: 0;
+  top: 0;
+  height: 100%;
+  font-size: 24px;
+  width: 100%;
+  
+}

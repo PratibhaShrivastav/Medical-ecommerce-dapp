@@ -95,7 +95,7 @@
 						    </div>
 						</li> {% endcomment %}
 						{% if request.user.is_authenticated %}
-						<li class="shopping-cart"><a href="/accounts/cart" class="cart"><span><small>0</small><i class="fas fa-2x fa-shopping-cart"></i></span></a></li>
+						<li class="shopping-cart"><a href="/accounts/cart" class="cart"><span><i class="fas fa-2x fa-shopping-cart"></i></span></a></li>
 						{% endif %}
 					</ul>
 				</div>
@@ -113,21 +113,29 @@
 						<div class="col-md-6 col-md-offset-3 col-md-pull-3 js-fullheight slider-text">
 							<div class="slider-text-inner">
 								<div class="desc">
-									<span class="price">$800</span>
-									<h2>Alato Cabinet</h2>
-									<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
-									<p><a href="single.html" class="btn btn-primary btn-outline btn-lg">Purchase Now</a></p>
+									{% comment %} <span class="price">$800</span> {% endcomment %}
+									<h2>UPLOAD PRESCRIPTION</h2>
+									<p>Upload your medical prescription here. Your data will be added to an ethereum blockchain.</p>
+									<p>
+									<form method="POST" action="{% url 'home' %}">
+									{% csrf_token %}
+									<div class="btn btn-primary btn-outline btn-lg">
+									<input type="file" name="prescription"  accept="image/*" style="outline:0">
+									</div>
+									<input type="submit" class="btn btn-primary btn-outline btn-lg">
+									</form>
+								</a></p>
 								</div>
 							</div>
 						</div>
 					</div>
 				</li>
-				<li style="background-image: url({% static 'images/wall.jpg' %});">
+				<li style="background-image: url({% static 'images/wall2.jpg' %});">
 					<div class="container">
 						<div class="col-md-6 col-md-offset-3 col-md-pull-3 js-fullheight slider-text">
 							<div class="slider-text-inner">
 								<div class="desc">
-									<span class="price">$530</span>
+									{% comment %} <span class="price">$530</span> {% endcomment %}
 									<h2>The Haluz Rocking Chair</h2>
 									<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
 									<p><a href="single.html" class="btn btn-primary btn-outline btn-lg">Purchase Now</a></p>
@@ -136,7 +144,7 @@
 						</div>
 					</div>
 				</li>
-				<li style="background-image: url({% static 'images/wall.jpg' %});">
+				{% comment %} <li style="background-image: url({% static 'images/wall.jpg' %});">
 					<div class="container">
 						<div class="col-md-6 col-md-offset-3 col-md-pull-3 js-fullheight slider-text">
 							<div class="slider-text-inner">
@@ -163,7 +171,7 @@
 							</div>
 						</div>
 					</div>
-</li>
+</li> {% endcomment %}
 
 		  </ul>
 	  </div>
@@ -219,7 +227,9 @@
 								<div class="product-grid" style="background-image:url({% static product.image %})">
 										<div class="inner">
 											<p>
+												{% if user.is_authenticated %}
 												<a href="accounts/{{product.id}}/add-to-cart/" class="icon">Add to Cart</a>
+												{% endif %}
 											</p>
 										</div>
 								</div>
