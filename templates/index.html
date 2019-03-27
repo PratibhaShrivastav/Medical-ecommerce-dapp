@@ -94,7 +94,9 @@
 						      </span>
 						    </div>
 						</li> {% endcomment %}
+						{% if request.user.is_authenticated %}
 						<li class="shopping-cart"><a href="/accounts/cart" class="cart"><span><small>0</small><i class="fas fa-2x fa-shopping-cart"></i></span></a></li>
+						{% endif %}
 					</ul>
 				</div>
 			</div>
@@ -227,8 +229,8 @@
 							</div>
 						</div>
 					</div>
-				{% endfor %}
-			</div>
+				</div>
+			{% endfor %}
 		</div>
 	</div>
 	

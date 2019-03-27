@@ -17,7 +17,13 @@ class Signup(CreateView):
 
 def Showcart(request):
     user = request.user
-    cart = user.cart
+    
+    try:
+        cart=request.user.cart
+    except:
+        cart = Cart(user=request.user,price=0)
+        cart.save()
+
     products = cart.products.all()
     price = cart.price
     
@@ -87,7 +93,11 @@ This function Adds list of medicines to a specified cart
 """
 def addListToCart(request, medicines):
     
-    cart = request.user.cart
+    try:
+        cart=request.user.cart
+    except:
+        cart = Cart(user=request.user,price=0)
+        cart.save()
 
     for medicine in medicines:
         product = Product.objects.get(name=medicine)
