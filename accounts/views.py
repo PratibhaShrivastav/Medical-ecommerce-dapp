@@ -9,6 +9,7 @@ import pytesseract
 import textrazor
 from PIL import Image
 from django.conf import settings
+import io
 
 class Signup(CreateView):
     form_class = UserCreationForm
@@ -84,9 +85,10 @@ def Removefromcart(request,pk):
 This function uses pytessaract library to convert an image into text
 """
 def ImageToText(request):
-    image = Image.open('static/')               #To Correct this line
+    image = Image.open(io.BytesIO(request.FILES['Image'].read()))
     content = pytesseract.image_to_string(image)
     Generate_Data(request, content, settings.TEXTRAZOR_KEY)
+    return redirect('/accounts/cart/')
 
 """
 This function Adds list of medicines to a specified cart
@@ -100,14 +102,18 @@ def addListToCart(request, medicines):
         cart.save()
 
     for medicine in medicines:
-        product = Product.objects.get(name=medicine)
-        product.cart = cart
-        product.amount += 1
-        cart.price = cart.price + product.price
+        print(medicine)
+        try:
+            product = Product.objects.get(name=str(medicine))
+            product.cart = cart
+            product.amount += 1
+            cart.price = cart.price + product.price
+            print("Added product ", medicine)
+        except:
+            continue
         product.save()
-        cart.save()
-
-    return redirect('/accounts/cart/')
+    cart.save()
+    # print('cart saved')
 
 """
 Converts a string into meaningful data, by recognizing various entities.
@@ -135,7 +141,10 @@ def Generate_Data(request, content, key):
             hospital = entity.id        
         if 'Date' in entity.dbpedia_types:                     #Case when entity is recongnised as Date
             date = entity.id
-    
+    # print(content)
+    # for entity in response.entities():
+    #     print(entity.id, entity.dbpedia_types)
+
     index = content.find(person[0])    
     drindex = content.find(person[1])      
     

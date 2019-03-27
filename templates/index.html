@@ -114,17 +114,16 @@
 							<div class="slider-text-inner">
 								<div class="desc">
 									{% comment %} <span class="price">$800</span> {% endcomment %}
-									<h2>UPLOAD PRESCRIPTION</h2>
+									 <h2>UPLOAD PRESCRIPTION</h2>
 									<p>Upload your medical prescription here. Your data will be added to an ethereum blockchain.</p>
 									<p>
-									<form method="POST" action="{% url 'home' %}">
-									{% csrf_token %}
-									<div class="btn btn-primary btn-outline btn-lg">
-									<input type="file" name="prescription"  accept="image/*" style="outline:0">
-									</div>
-									<input type="submit" class="btn btn-primary btn-outline btn-lg">
-									</form>
-								</a></p>
+											<form enctype="multipart/form-data" id="formfile" action="/accounts/analyze/" method="POST">
+												{% csrf_token %}
+												<input type="file" name="Image" id="inputfile" multiple>
+												<p id="dragfile">Drag your files here or click in this area.</p>
+												<button id="submitfile" type="submit">Upload</button>
+											</form>
+									</p>		
 								</div>
 							</div>
 						</div>
