@@ -141,13 +141,13 @@ def Generate_Data(request, content, key):
         # print(entity.matched_text)
         if 'ChemicalSubstance' in entity.dbpedia_types:        #Case when entity is recongnised as ChemicalSubstance
             medicines.append(str(entity.matched_text).lower())
-        if 'Drug' in entity.dbpedia_types:        #Case when entity is recongnised as ChemicalSubstance
+        elif 'Drug' in entity.dbpedia_types:                     #Case when entity is recongnised as Drug
             medicines.append(str(entity.matched_text).lower())
-        if 'Person' in entity.dbpedia_types:                   #Case when entity is recongnised as Person
+        elif 'Person' in entity.dbpedia_types:                   #Case when entity is recongnised as Person
             person.append(entity.matched_text)
-        if 'Company' in entity.dbpedia_types:                  #Case when entity is recongnised as Company
+        elif 'Company' in entity.dbpedia_types:                  #Case when entity is recongnised as Company
             hospital = entity.matched_text        
-        if 'Date' in entity.dbpedia_types:                     #Case when entity is recongnised as Date
+        elif 'Date' in entity.dbpedia_types:                     #Case when entity is recongnised as Date
             date = entity.matched_text
     # print(content)
     # for entity in response.entities():
