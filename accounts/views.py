@@ -95,25 +95,30 @@ This function Adds list of medicines to a specified cart
 """
 def addListToCart(request, medicines):
     
+    print("===========Adding to cart============")
+
     try:
         cart=request.user.cart
+        print("Cart fetched")
     except:
         cart = Cart(user=request.user,price=0)
         cart.save()
+        print("Cart Created")
 
     for medicine in medicines:
-        print(medicine)
+        print("Medicine :", medicine)
         try:
-            product = Product.objects.get(name=str(medicine))
+            product = Product.objects.get(name__iexact=str(medicine))
             product.cart = cart
             product.amount += 1
             cart.price = cart.price + product.price
-            print("Added product ", medicine)
+            print("has been Added")
         except:
+            print("was not in store.")
             continue
         product.save()
-    cart.save()
-    # print('cart saved')
+        cart.save()
+    print("===========Added to cart============")
 
 """
 Converts a string into meaningful data, by recognizing various entities.
@@ -133,18 +138,25 @@ def Generate_Data(request, content, key):
     patient = ""
     
     for entity in response.entities():
+        # print(entity.matched_text)
         if 'ChemicalSubstance' in entity.dbpedia_types:        #Case when entity is recongnised as ChemicalSubstance
-            medicines.append(str(entity.id).lower())
+            medicines.append(str(entity.matched_text).lower())
+        if 'Drug' in entity.dbpedia_types:        #Case when entity is recongnised as ChemicalSubstance
+            medicines.append(str(entity.matched_text).lower())
         if 'Person' in entity.dbpedia_types:                   #Case when entity is recongnised as Person
-            person.append(entity.id)
+            person.append(entity.matched_text)
         if 'Company' in entity.dbpedia_types:                  #Case when entity is recongnised as Company
-            hospital = entity.id        
+            hospital = entity.matched_text        
         if 'Date' in entity.dbpedia_types:                     #Case when entity is recongnised as Date
-            date = entity.id
+            date = entity.matched_text
     # print(content)
     # for entity in response.entities():
-    #     print(entity.id, entity.dbpedia_types)
+    #     print(entity.matched_text, entity.dbpedia_types)
 
+    print(len(person))
+    if(len(person)<2):
+        return 1
+    
     index = content.find(person[0])    
     drindex = content.find(person[1])      
     
