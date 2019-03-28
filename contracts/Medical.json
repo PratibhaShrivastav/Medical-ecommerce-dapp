@@ -1,0 +1,18 @@
+{
+  "language":"Solidity",
+  "sources":
+  {
+    "MedicalRecords.sol":
+    {
+      "urls": ["MedicalContract.sol"]
+    }
+  },
+  "settings":
+  {
+    "outputSelection": {
+      "*": {
+        "*": [ "*"]
+      }
+    }
+  }
+}
