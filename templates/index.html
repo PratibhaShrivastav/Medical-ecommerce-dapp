@@ -79,9 +79,9 @@
 						{% if not user.is_authenticated %}
 						<li><a href="{% url 'accounts:login' %}">Log In</a></li>
 						<li><a href="{% url 'accounts:signup' %}">Signup</a></li>
-						<li><a href="{% url 'home' %}">Prescription</a></li>
 						{% else %}
 						<li><a href="{% url 'accounts:logout' %}">Log Out</a></li>
+						<li><a href="{% url 'accounts:ShowReceipt' %}">Prescription</a></li>
 						{% endif %}
 					</ul>
 				</div>
