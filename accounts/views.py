@@ -4,6 +4,7 @@ from django.views.generic import CreateView
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404,redirect
 from products.models import Product, Cart
+from .models import BlockIds
 
 import pytesseract
 import textrazor
@@ -188,8 +189,34 @@ def Generate_Data(request, content, key):
 
     print("Data stored in Blockchain successfully, id = ", block_id)
     
+    new_block = BlockIds(user=request.user, block_id=block_id)
+    new_block.save()
+
     print("Fetching Data ...")
     Data = MedicalContractInstance.functions.showData(int(block_id)).call()
     print(Data)
 
     addListToCart(request, medicines)
+
+
+"""
+Used to fetch data from blockchain to show back to a user.
+"""
+def get_receipt_data(request):
+
+    w3 = Web3(Web3.HTTPProvider("http://127.0.0.1:7545"))       #Creating Instance of web3 object
+    with open("contracts/data.json", 'r') as f:
+        datastore = json.load(f)
+        abi = datastore["abi"]
+        contract_address = datastore["contract_address"]
+
+    w3.eth.defaultAccount = w3.eth.accounts[1]                      #Selecting an account from with trancsactions would happen
+    MedicalContractInstance = w3.eth.contract(address=contract_address, abi=abi)   #Getting the instance of deployed contract using ABI and address 
+
+    blocks = BlockIds.objects.filter(user=request.user)
+    
+    for block in blocks:
+        data = MedicalContractInstance.functions.showData(block.block_id).call()
+        print(data)
+    
+    return render(request, 'cart.html')

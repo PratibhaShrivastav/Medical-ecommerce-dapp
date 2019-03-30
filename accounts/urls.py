@@ -11,6 +11,7 @@ urlpatterns = [
     path('signup/',Signup.as_view(),name='signup'),
     path('cart/',views.Showcart,name='showcart'),
     path('analyze/', views.ImageToText, name="ImageUpload"),
+    path('show/', views.get_receipt_data, name="ShowReceipt"),
     path('<int:pk>/add-to-cart/',views.Addtocart,name="addtocart"),
     path('<int:pk>/remove-from-cart/',views.Removefromcart,name="removefromcart"),
 ]

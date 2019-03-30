@@ -7,3 +7,10 @@ class Cart(models.Model):
 
     def __str__(self):
         return self.user.username+"'s cart"
+
+class BlockIds(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    block_id = models.IntegerField(null=False,blank=False)
+
+    def __str__(self):
+        return self.user.username + "'s block number " + self.block_id
