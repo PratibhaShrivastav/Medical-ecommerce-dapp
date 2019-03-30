@@ -60,7 +60,7 @@
 				<div class="col-md-6 col-xs-6 text-center menu-1">
 					<ul>
 						<li class="has-dropdown">
-							<a href="{% url 'home' %}">Shop</a>
+							<a style="font-size:25px" href="{% url 'home' %}">Shop</a>
 							<ul class="dropdown">
 								<li><a href="single.html">Single Shop</a></li>
 							</ul>
@@ -76,11 +76,11 @@
 							</ul>
 						</li>-->
 						{% if not user.is_authenticated %}
-						<li><a href="{% url 'accounts:login' %}">Log In</a></li>
-						<li><a href="{% url 'accounts:signup' %}">Signup</a></li>
-						<li><a href="{% url 'home' %}">Prescription</a></li>
+						<li><a style="font-size:25px" href="{% url 'accounts:login' %}">Log In</a></li>
+						<li><a style="font-size:25px" href="{% url 'accounts:signup' %}">Signup</a></li>
+						<li><a style="font-size:25px" href="{% url 'home' %}">Prescription</a></li>
 						{% else %}
-						<li><a href="{% url 'accounts:logout' %}">Log Out</a></li>
+						<li><a style="font-size:25px" href="{% url 'accounts:logout' %}">Log Out</a></li>
 						{% endif %}
 					</ul>
 				</div>
@@ -115,13 +115,14 @@
 								<div class="desc">
 									{% comment %} <span class="price">$800</span> {% endcomment %}
 									<h2>UPLOAD PRESCRIPTION</h2>
-									<p>Upload your medical prescription here. Your data will be added to an ethereum blockchain.Click here</p>
+									<p>Upload your medical prescription here. Your data will be added to an ethereum blockchain.<b><u>Click here</u></b></p>
 									<p>
 											<form enctype="multipart/form-data" id="formfile" action="/accounts/analyze/" method="POST">
 												{% csrf_token %}
 												<input type="file" name="Image" id="inputfile" multiple>
 												<p id="dragfile">Drag your files here or click in this area.</p>
-												<button id="submitfile" type="submit">Upload</button>
+												<!-- <button id="submitfile" type="submit">Upload</button> -->
+												<button class="button">Upload your file</button>
 											</form>
 									</p>		
 								</div>
@@ -182,11 +183,11 @@
 				<div class="col-md-4 col-sm-4 text-center">
 					<div class="feature-center animate-box" data-animate-effect="fadeIn">
 						<span class="icon">
-							<i class="icon-credit-card"></i>
+						 <i class="fab fa-ethereum"></i>
 						</span>
-						<h3>Credit Card</h3>
+						<h3>Ethereum</h3>
 						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove</p>
-						<p><a href="#" class="btn btn-primary btn-outline">Learn More</a></p>
+						<!-- <p><a href="#" class="btn btn-primary btn-outline">Learn More</a></p> -->
 					</div>
 				</div>
 				<div class="col-md-4 col-sm-4 text-center">
@@ -196,7 +197,7 @@
 						</span>
 						<h3>Save Money</h3>
 						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove</p>
-						<p><a href="#" class="btn btn-primary btn-outline">Learn More</a></p>
+						<!-- <p><a href="#" class="btn btn-primary btn-outline">Learn More</a></p> -->
 					</div>
 				</div>
 				<div class="col-md-4 col-sm-4 text-center">
@@ -206,7 +207,7 @@
 						</span>
 						<h3>Free Delivery</h3>
 						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove</p>
-						<p><a href="#" class="btn btn-primary btn-outline">Learn More</a></p>
+						<!-- <p><a href="#" class="btn btn-primary btn-outline">Learn More</a></p> -->
 					</div>
 				</div>
 			</div>
