@@ -20,3 +20,4 @@ def Home(request):
     context = {'products' : products_data}
     
     return render(request, 'index.html', context)
+

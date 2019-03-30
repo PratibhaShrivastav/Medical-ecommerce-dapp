@@ -60,27 +60,22 @@
 				<div class="col-md-6 col-xs-6 text-center menu-1">
 					<ul>
 						<li class="has-dropdown">
-							<a style="font-size:20px" href="{% url 'home' %}">Shop</a>
+							<a style="font-size:18px" href="{% url 'home' %}">Shop</a>
 							<ul class="dropdown">
 								<li><a href="single.html">Single Shop</a></li>
+								
 							</ul>
+							<li><a style="font-size:18px" href="#ishu">Features</a></li>
+						
 						</li>
-						<!--<li><a href="about.html">About</a></li>
-						<li class="has-dropdown">
-							<a href="services.html">Services</a>
-							<ul class="dropdown">
-								<li><a href="#">Web Design</a></li>
-								<li><a href="#">eCommerce</a></li>
-								<li><a href="#">Branding</a></li>
-								<li><a href="#">API</a></li>
-							</ul>
-						</li>-->
+						
 						{% if not user.is_authenticated %}
-						<li><a style="font-size:20px" href="{% url 'accounts:login' %}">Log In</a></li>
-						<li><a style="font-size:20px" href="{% url 'accounts:signup' %}">Signup</a></li>
-						<li><a style="font-size:20px" href="{% url 'home' %}">Prescription</a></li>
+						<li><a style="font-size:18px" href="{% url 'accounts:login' %}">Log In</a></li>
+						<li><a style="font-size:18px" href="{% url 'accounts:signup' %}">Signup</a></li>
+						<li><a style="font-size:18px" href="{% url 'home' %}">Prescription</a></li>
+						<!-- <li><a style="font-size:18px" href="#ishu">Features</a></li> -->
 						{% else %}
-						<li><a style="font-size:20px" href="{% url 'accounts:logout' %}">Log Out</a></li>
+						<li><a style="font-size:18px" href="{% url 'accounts:logout' %}">Log Out</a></li>
 						{% endif %}
 					</ul>
 				</div>
@@ -95,6 +90,7 @@
 						    </div>
 						</li> {% endcomment %}
 						{% if request.user.is_authenticated %}
+						<!-- <li><a style="font-size:18px" href="#ishu">Features</a></li> -->
 						<li class="shopping-cart"><a href="/accounts/cart" class="cart"><span><i class="fas fa-2x fa-shopping-cart"></i></span></a></li>
 						{% endif %}
 					</ul>
@@ -176,7 +172,8 @@
 		  </ul>
 	  </div>
 	</aside>
-
+	<a name="ishu">
+						
 	<div id="fh5co-services" class="fh5co-bg-section">
 		<div class="container">
 			<div class="row">
@@ -186,7 +183,8 @@
 						 <i class="fab fa-ethereum"></i>
 						</span>
 						<h3>Ethereum</h3>
-						<p>Ethereum is a decentralized platform that runs smart contracts : applications that run exactly as programmed without any possibility of downtime, censorship, fraud or third-party interference.</p>
+						
+						<p style="color:black">Ethereum is a decentralized platform that runs smart contracts : applications that run exactly as programmed without any possibility of downtime, censorship, fraud or third-party interference.</p>
 						<!-- <p><a href="#" class="btn btn-primary btn-outline">Learn More</a></p> -->
 					</div>
 				</div>
@@ -197,7 +195,7 @@
 							<i class="fas fa-shield-alt"></i>
 						</span>
 						<h3>Secure</h3>
-						<p>Adding data to blockchain makes it tamper proof avoiding any kind of modifications to the data. This works on a peer to peer network.</p>
+						<p style="color:black">Adding data to blockchain makes it tamper proof avoiding any kind of modifications to the data. This works on a peer to peer network.</p>
 						<!-- <p><a href="#" class="btn btn-primary btn-outline">Learn More</a></p> -->
 					</div>
 				</div>
@@ -207,13 +205,13 @@
 							<i class="fas fa-stethoscope"></i>
 						</span>
 						<h3>Easy Access</h3>
-						<p>Auto-add medicines to cart just by uploading your medical prescription.This provides ease of access to the medicines for the user alongside the description of medicines.</p>
+						<p style="color:black">Auto-add medicines to cart just by uploading your medical prescription.This provides ease of access to the medicines for the user alongside the description of medicines.</p>
 						<!-- <p><a href="#" class="btn btn-primary btn-outline">Learn More</a></p> -->
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</div></a>
 	<div id="fh5co-product">
 		<div class="container">
 			<div class="row animate-box">

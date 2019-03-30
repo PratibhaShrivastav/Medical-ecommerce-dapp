@@ -13,4 +13,5 @@ urlpatterns = [
     path('analyze/', views.ImageToText, name="ImageUpload"),
     path('<int:pk>/add-to-cart/',views.Addtocart,name="addtocart"),
     path('<int:pk>/remove-from-cart/',views.Removefromcart,name="removefromcart"),
+    
 ]
