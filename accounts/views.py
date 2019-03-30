@@ -215,8 +215,16 @@ def get_receipt_data(request):
 
     blocks = BlockIds.objects.filter(user=request.user)
     
+    receipt_data = []
+
     for block in blocks:
+        temp = {}
         data = MedicalContractInstance.functions.showData(block.block_id).call()
-        print(data)
+        temp['pname'] = data[0]
+        temp['hname'] = data[1]
+        temp['dname'] = data[2]
+        temp['medicines'] = data[3]
+        receipt_data.append(temp)
+    print(receipt_data)
     
-    return render(request, 'cart.html')
+    return render(request, 'Receipts.html', {'receipt_data':receipt_data})

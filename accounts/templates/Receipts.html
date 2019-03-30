@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/table.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="receipt-details" style="margin-left:40%;">
+
+    {% for receipt in receipt_data %}
+    <table class="rwd-table">
+
+        <tr>
+            <td>Patient's name</td>
+            <td>{{receipt.pname}}</td>
+        </tr>
+        <tr>
+            <td>Hospital name</td>
+            <td>{{receipt.hname}}</td>
+        </tr>
+        <tr>
+            <td>Doctor's name</td>
+            <td>{{receipt.dname}}</td>
+        </tr>
+        <tr>
+            <td>Medicines</td>
+            <td>
+                {% for medicine in receipt.medicines %}
+                    <li>{{medicine}}</li>
+                {% endfor %}
+            </td>
+        </tr>
+    </table>
+    {% endfor %}
+  
+</div>
+{% endblock %}
