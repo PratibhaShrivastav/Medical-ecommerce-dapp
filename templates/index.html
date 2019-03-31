@@ -60,22 +60,23 @@
 				<div class="col-md-6 col-xs-6 text-center menu-1">
 					<ul>
 						<li class="has-dropdown">
-							<a style="font-size:18px" href="{% url 'home' %}">Shop</a>
+							<a style="font-size:15px" href="{% url 'home' %}">Shop</a>
+							
 							<ul class="dropdown">
 								<li><a href="single.html">Single Shop</a></li>
-								
+							
 							</ul>
-							<li><a style="font-size:18px" href="#ishu">Features</a></li>
-						
+							<li><a style="font-size:15px" href="#ishu">Features</a></li>
+						<li><a style="font-size:15px" href="{% url 'about' %}">ABOUT</a></li>
 						</li>
 						
 						{% if not user.is_authenticated %}
-						<li><a style="font-size:18px" href="{% url 'accounts:login' %}">Log In</a></li>
-						<li><a style="font-size:18px" href="{% url 'accounts:signup' %}">Signup</a></li>
-						<li><a style="font-size:18px" href="{% url 'home' %}">Prescription</a></li>
+						<li><a style="font-size:15px" href="{% url 'accounts:login' %}">Log In</a></li>
+						<li><a style="font-size:15px" href="{% url 'accounts:signup' %}">Signup</a></li>
+						<li><a style="font-size:15px" href="{% url 'home' %}">Prescription</a></li>
 						<!-- <li><a style="font-size:18px" href="#ishu">Features</a></li> -->
 						{% else %}
-						<li><a style="font-size:18px" href="{% url 'accounts:logout' %}">Log Out</a></li>
+						<li><a style="font-size:15px" href="{% url 'accounts:logout' %}">Log Out</a></li>
 						{% endif %}
 					</ul>
 				</div>

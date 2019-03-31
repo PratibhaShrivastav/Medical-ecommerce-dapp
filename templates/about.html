@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Medical Ecommerce dapp</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"
+  <!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet"> -->
+	<!-- <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i" rel="stylesheet"> -->
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+
+	<!-- Flexslider  -->
+	<link rel="stylesheet" href="{% static 'css/flexslider.css' %}">
+
+	<!-- Owl Carousel  -->
+	<link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+	<!-- Modernizr JS -->
+	<script src="{% static 'js/modernizr-2.6.2.min.js' %}"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
+	</head>
+	<body>
+		
+	  
+	   <nav class="fh5co-nav" role="navigation">
+	<div class="container">
+		<div class="row">
+				<div class="col-md-3 col-xs-2">
+			
+					 <div id="fh5co-logo"><a href="{% url 'home' %}">Medico</a></div>
+				</div>
+                <div class="col-md-6 col-xs-6 text-center menu-1">
+					<ul>
+						<li class="has-dropdown">
+							<a style="font-size:15px" href="{% url 'home' %}">Shop</a>
+							
+							<ul class="dropdown">
+								<li><a href="single.html">Single Shop</a></li>
+							
+							</ul>
+							
+							<li><a style="font-size:15px" href="{% url 'about' %}">ABOUT</a></li>
+						</li>
+						
+						{% if not user.is_authenticated %}
+						<li><a style="font-size:15px" href="{% url 'accounts:login' %}">Log In</a></li>
+						<li><a style="font-size:15px" href="{% url 'accounts:signup' %}">Signup</a></li>
+						<li><a style="font-size:15px" href="{% url 'home' %}">Prescription</a></li>
+						<!-- <li><a style="font-size:18px" href="#ishu">Features</a></li> -->
+						{% else %}
+						<li><a style="font-size:15px" href="{% url 'accounts:logout' %}">Log Out</a></li>
+						{% endif %}
+					</ul>
+                </div>
+            
+				<div class="col-md-3 col-xs-4 text-right hidden-xs menu-2">
+					<ul>
+						{% comment %} <li class="search">
+							<div class="input-group">
+						      <input type="text" placeholder="Search..">
+						      <span class="input-group-btn">
+						        <button class="btn btn-primary" type="button"><i class="icon-search"></i></button>
+						      </span>
+						    </div>
+						</li> {% endcomment %}
+						{% if request.user.is_authenticated %}
+						<!-- <li><a style="font-size:18px" href="#ishu">Features</a></li> -->
+						<li class="shopping-cart"><a href="/accounts/cart" class="cart"><span><i class="fas fa-2x fa-shopping-cart"></i></span></a></li>
+						{% endif %}
+					</ul>
+				</div>
+			</div>
+			
+		</div>
+     </nav>
+     <div class="container"><br>
+
+         <h3>What is Medrec?</h3>
+         <br>
+         <p>lectronic Health Records (EHRs) were never designed to manage the complexities of multi-institutional, lifetime medical records. As patients move between providers, their data becomes scattered across different organizations, losing easy access to past records. As providers — not patients — are the primary stewards of EHRs, patients face significant hurdles in viewing their reports, correcting erroneous data, and distributing the information. The situation is much like consumer finance, where an individual may have several bank accounts, credit cards, loans, and assets but no unified way to access and control them. In the case of finance, however, there is an infrastructure in place that greases the wheels: currency. With medical information we are still in the age of barter.
+
+            </p><br>
+           
+            <p>MedRec is the combination of a social need with a technological enabler: a system that prioritizes patient agency, giving a transparent and accessible view of medical history. To continue the banking analogy, financial systems may contain multiple different depositories of currency, perhaps one for each provider network. The problem is that health records are not fungible; each is an individual’s unique imprint. There is no like-for-like trade possible as we can do with money. Whereas competition and multiplicity often results in lower consumer costs, here it risks a mass of incompatible or inaccessible barriers to interchange and control. We propose an alternative: a distributed access and validation system using the blockchain to replace centralized intermediaries.</p>
+     <h3>What are the technologies we use?</h3><br>
+     <p>Developed as a means of recording financial transactions for digital currencies, the blockchain may be extended more generally as a platform for distributed computation. the blockchain uses public key cryptography to create a tamper-proof chain of content, supported not by a central server but a decentralised network of participating ‘nodes’. Conventionally, each individual node works to solve a series of hashing exercises, which contribute to the formation of the chain — a process known as ‘mining’. However, there are variations that are more efficient, as will be described later.</p>
+     <br>
+            <p>The first implementation of Medrec was developed using the Ethereum blockchain. Ethereum uses a system called ‘smart contracts’ to execute scripts on the blockchain, extending bitcoin to a turing-complete language. This system of smart contracts significantly broadens the possibilities for decentralised computation using the blockchain, and it is this system which formed the backbone for the development of Medrec.</p>
+        </div>
+   </body>
+</html>

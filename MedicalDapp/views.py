@@ -20,4 +20,5 @@ def Home(request):
     context = {'products' : products_data}
     
     return render(request, 'index.html', context)
-
+def About(request):
+    return render(request, 'about.html', context={})
